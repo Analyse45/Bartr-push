@@ -10,6 +10,10 @@ import Index from "./pages/Index";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import CreatePost from "./pages/CreatePost";
+import PushConfirmation from "./pages/PushConfirmation";
+import Notifications from "./pages/Notifications";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
