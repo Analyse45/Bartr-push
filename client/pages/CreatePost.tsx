@@ -4,23 +4,33 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Camera, MapPin } from "lucide-react";
 
 export default function CreatePost() {
   const navigate = useNavigate();
-  const [category, setCategory] = useState<string>('');
-  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState<string>("");
+  const [description, setDescription] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string>('');
+  const [imagePreview, setImagePreview] = useState<string>("");
 
   const categories = [
-    { value: 'help', label: 'Help', color: 'bg-blue-100 text-blue-800' },
-    { value: 'work', label: 'Work', color: 'bg-green-100 text-green-800' },
-    { value: 'services', label: 'Services', color: 'bg-purple-100 text-purple-800' },
-    { value: 'alert', label: 'Alert', color: 'bg-red-100 text-red-800' }
+    { value: "help", label: "Help", color: "bg-blue-100 text-blue-800" },
+    { value: "work", label: "Work", color: "bg-green-100 text-green-800" },
+    {
+      value: "services",
+      label: "Services",
+      color: "bg-purple-100 text-purple-800",
+    },
+    { value: "alert", label: "Alert", color: "bg-red-100 text-red-800" },
   ];
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,9 +49,9 @@ export default function CreatePost() {
     if (!category || !description.trim()) {
       return;
     }
-    
+
     // Navigate to confirmation screen
-    navigate('/push-confirmation');
+    navigate("/push-confirmation");
   };
 
   const isFormValid = category && description.trim().length > 10;
@@ -80,7 +90,9 @@ export default function CreatePost() {
               {categories.map((cat) => (
                 <SelectItem key={cat.value} value={cat.value}>
                   <div className="flex items-center space-x-3">
-                    <div className={`px-2 py-1 rounded-lg ${cat.color} text-xs font-medium`}>
+                    <div
+                      className={`px-2 py-1 rounded-lg ${cat.color} text-xs font-medium`}
+                    >
                       {cat.label}
                     </div>
                     <span>{cat.label}</span>
@@ -93,7 +105,10 @@ export default function CreatePost() {
 
         {/* Description */}
         <div className="space-y-3">
-          <Label htmlFor="description" className="text-sm font-medium text-gray-700">
+          <Label
+            htmlFor="description"
+            className="text-sm font-medium text-gray-700"
+          >
             Description *
           </Label>
           <Textarea
@@ -136,7 +151,9 @@ export default function CreatePost() {
               ) : (
                 <div className="text-center">
                   <Camera className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                  <span className="text-sm text-gray-500">Tap to add photo</span>
+                  <span className="text-sm text-gray-500">
+                    Tap to add photo
+                  </span>
                 </div>
               )}
             </label>
@@ -147,12 +164,11 @@ export default function CreatePost() {
         <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
           <div>
             <p className="font-medium text-gray-900">Post anonymously</p>
-            <p className="text-sm text-gray-500">Hide your identity from others</p>
+            <p className="text-sm text-gray-500">
+              Hide your identity from others
+            </p>
           </div>
-          <Switch
-            checked={isAnonymous}
-            onCheckedChange={setIsAnonymous}
-          />
+          <Switch checked={isAnonymous} onCheckedChange={setIsAnonymous} />
         </div>
 
         {/* Push Range Info */}
@@ -168,7 +184,7 @@ export default function CreatePost() {
 
       {/* Bottom Action */}
       <div className="px-6 py-4 border-t border-gray-200">
-        <Button 
+        <Button
           onClick={handleSubmit}
           disabled={!isFormValid}
           className="w-full h-14 text-lg font-semibold rounded-2xl bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"

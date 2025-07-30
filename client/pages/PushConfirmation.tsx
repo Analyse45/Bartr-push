@@ -7,7 +7,7 @@ export default function PushConfirmation() {
   useEffect(() => {
     // Auto redirect after 5 seconds
     const timer = setTimeout(() => {
-      window.location.href = '/home';
+      window.location.href = "/home";
     }, 5000);
 
     return () => clearTimeout(timer);
@@ -21,7 +21,7 @@ export default function PushConfirmation() {
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto animate-pulse">
             <CheckCircle className="w-12 h-12 text-green-600" />
           </div>
-          
+
           {/* Ripple effect */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-24 h-24 border-4 border-green-200 rounded-full animate-ping"></div>
@@ -105,8 +105,8 @@ export default function PushConfirmation() {
           </Button>
         </Link>
         <Link to="/home">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="w-full h-14 text-lg font-semibold rounded-2xl border-gray-200 hover:bg-gray-50"
           >
             Back to Feed
